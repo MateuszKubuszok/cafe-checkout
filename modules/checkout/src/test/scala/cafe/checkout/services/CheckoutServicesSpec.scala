@@ -11,7 +11,7 @@ class CheckoutServicesSpec extends Specification {
 
   "CheckoutServices.totalCost" should {
 
-    "calculate the total cost of apples and oranges" in {
+    "calculate the total cost of drinks and foods" in {
       // given
       val services = new CheckoutServices[Try]
       val items    = List(oneCola, oneCoffee, oneCheeseSandwich)
