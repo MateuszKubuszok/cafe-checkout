@@ -8,9 +8,9 @@ object TestItems {
   val oneCoffee  = Item(ItemType("coffee"))
   val twoCoffees = Item(ItemType("coffee"), Quantity(2))
 
-  val oneCheeseSandwich = Item(ItemType("cheese sandwich"))
+  val oneCheeseSandwich   = Item(ItemType("cheese sandwich"))
   val twoCheeseSandwiches = Item(ItemType("cheese sandwich"), Quantity(2))
 
-  val oneSteakSandwich = Item(ItemType("steak sandwich"))
+  val oneSteakSandwich   = Item(ItemType("steak sandwich"))
   val twoSteakSandwiches = Item(ItemType("steak sandwich"), Quantity(2))
 }

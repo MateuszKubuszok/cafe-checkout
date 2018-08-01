@@ -1,6 +1,6 @@
 package cafe.checkout.services
 
-import cafe.checkout.{ Item, ItemType }
+import cafe.checkout.{ Item, ItemType, Quantity }
 import cats.implicits._
 import org.specs2.mutable.Specification
 import cafe.checkout.TestItems._
@@ -20,7 +20,43 @@ class CheckoutServicesSpec extends Specification {
       val result = services.totalCost(items)
 
       // then
-      result must beEqualTo(Success(350))
+      result must beEqualTo(Success(385))
+    }
+
+    "apply 10% service for food" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneCheeseSandwich)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(220))
+    }
+
+    "apply 20% service for hot food" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneSteakSandwich)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(540))
+    }
+
+    "apply no more than 20GBP when hot food on list" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(twoSteakSandwiches.copy(quantity = Quantity(30)))
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(15500))
     }
 
     "return error if some item has no price defined" in {
